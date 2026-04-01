@@ -5,13 +5,6 @@ let collected = {
   room3: false
 };
 
-// Base64 colored square placeholders (now visible)
-const images = {
-  gem: "data:image/svg+xml;base64," + btoa('<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"><rect width="80" height="80" fill="red"/></svg>'),
-  key: "data:image/svg+xml;base64," + btoa('<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"><rect width="80" height="80" fill="yellow"/></svg>'),
-  scroll: "data:image/svg+xml;base64," + btoa('<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"><rect width="80" height="80" fill="cyan"/></svg>')
-};
-
 function updateInventory() {
   document.getElementById("inventory").innerText =
     "Items: " + (inventory.length ? inventory.join(", ") : "None");
@@ -21,48 +14,27 @@ function enterRoom(room) {
   if (collected[room]) {
     document.getElementById("story").innerText =
       "You already cleared this room.";
-    document.getElementById("item").style.display = "none";
     return;
   }
 
-  let itemDiv = document.getElementById("item");
-  let itemImage = document.getElementById("itemImage");
+  let itemName = ""; // This will store the correct item for the room
 
   if (room === "room1") {
-    document.getElementById("story").innerText = "You see a sparkling Gem!";
-    itemImage.src = images.gem;
-    itemImage.dataset.name = "Gem";
+    document.getElementById("story").innerText = "You found a Gem!";
+    itemName = "Gem";
   }
   if (room === "room2") {
-    document.getElementById("story").innerText = "A shiny Key rests on a pedestal.";
-    itemImage.src = images.key;
-    itemImage.dataset.name = "Key";
+    document.getElementById("story").innerText = "You found a Key!";
+    itemName = "Key";
   }
   if (room === "room3") {
-    document.getElementById("story").innerText = "A glowing Scroll floats in the air.";
-    itemImage.src = images.scroll;
-    itemImage.dataset.name = "Scroll";
+    document.getElementById("story").innerText = "You found a Scroll!";
+    itemName = "Scroll";
   }
 
-  itemDiv.style.display = "block";
-
-  itemImage.onclick = function() {
-    collectItem(room);
-  };
-}
-
-function collectItem(room) {
-  if (collected[room]) return;
-
-  let itemName = document.getElementById("itemImage").dataset.name;
+  // Add the item to inventory
   inventory.push(itemName);
-
   collected[room] = true;
-
-  document.getElementById("story").innerText =
-    `You collected your item! (${inventory.join(", ")})`;
-
-  document.getElementById("item").style.display = "none";
   updateInventory();
   checkWin();
 }
