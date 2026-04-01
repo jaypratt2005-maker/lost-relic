@@ -20,26 +20,17 @@ body {
   color: #fff;
 }
 
-/* ROOM STYLES WITH FANTASY PLACEHOLDER IMAGES */
+/* ROOM STYLES WITH GRADIENT BACKGROUNDS */
 .room1 {
-  background-color: #1a1a2e;
-  background-image: url('https://i.imgur.com/7sQ1qJ7.jpg'); /* Dark dungeon */
-  background-size: cover;
-  background-position: center;
+  background: linear-gradient(135deg, #1a1a2e, #3a3a5e); /* Dark dungeon feel */
 }
 
 .room2 {
-  background-color: #16213e;
-  background-image: url('https://i.imgur.com/XYjvC0s.jpg'); /* Treasure room */
-  background-size: cover;
-  background-position: center;
+  background: linear-gradient(135deg, #16213e, #3e3e6e); /* Treasure room vibe */
 }
 
 .room3 {
-  background-color: #0f3460;
-  background-image: url('https://i.imgur.com/2XIvxH6.jpg'); /* Mystical sky */
-  background-size: cover;
-  background-position: center;
+  background: linear-gradient(135deg, #0f3460, #1f5fa0); /* Mystical sky feel */
 }
 
 /* BUTTONS */
@@ -59,18 +50,9 @@ button:hover {
   background-color: #555;
 }
 
-/* PUZZLE INPUT */
-#puzzle {
+/* ITEM AREA */
+#item {
   margin-top: 20px;
-}
-
-input[type="text"] {
-  padding: 10px;
-  margin: 10px;
-  border-radius: 5px;
-  border: none;
-  width: 150px;
-  font-size: 16px;
 }
 
 /* INVENTORY */
