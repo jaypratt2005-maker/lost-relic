@@ -1,5 +1,3 @@
-// Updated game.js — clickable items, background rooms
-
 let inventory = [];
 let currentRoom = null;
 let collected = {
@@ -28,26 +26,26 @@ function enterRoom(room) {
   gameDiv.classList.add(room);
 
   let itemDiv = document.getElementById("item");
-  let itemButton = document.getElementById("itemButton");
+  let itemImage = document.getElementById("itemImage");
 
-  // Set item for the room
+  // Set image source and story for each room
   if (room === "room1") {
     document.getElementById("story").innerText = "You see a sparkling Gem!";
-    itemButton.innerText = "Take Gem";
+    itemImage.src = "gem.png";
   }
   if (room === "room2") {
     document.getElementById("story").innerText = "A shiny Key rests on a pedestal.";
-    itemButton.innerText = "Take Key";
+    itemImage.src = "key.png";
   }
   if (room === "room3") {
     document.getElementById("story").innerText = "A glowing Scroll floats in the air.";
-    itemButton.innerText = "Take Scroll";
+    itemImage.src = "scroll.png";
   }
 
   itemDiv.style.display = "block";
 
-  // Add click event
-  itemButton.onclick = function() {
+  // Click the image to collect item
+  itemImage.onclick = function() {
     collectItem(room);
   };
 }
