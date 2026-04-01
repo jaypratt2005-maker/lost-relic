@@ -1,16 +1,15 @@
 let inventory = [];
-let currentRoom = null;
 let collected = {
   room1: false,
   room2: false,
   room3: false
 };
 
-// Base64 images that actually show
+// Base64 colored square placeholders (now visible)
 const images = {
-  gem: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABGElEQVR4nO3WsQkAIQwF0V3G2OwRpGOSbE3gGUGfNISyzDN2aebP1/4f0+QAAAAAAwK+7u/9nL2NIAAAIDaR8AMjRNYHhEhfQAw/ygbAGTQB8JUA2NwAb6AdgHgJgFoB4CaAWgHgJgFoB4CaAWgHgJgFoB4CaAWgHgJgFoB4CaAWgHgJgFoB4CaAWgHgJgFoB4CaAWgHgJgFoB4CaAWgHgJgFoB4CaAWgHgJgFoB4CaAWgHgJgFoB4CaAWgHgAAAAAAABAHQD1CPABzqH+gAAAABJRU5ErkJggg==",
-  key: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABH0lEQVR4nO3WsQkAIQwF0V3G2OwRpGOSbE3gGUGfNISyzDN2aebP1/4f0+QAAAAAAwK+7u/9nL2NIAAAIDaR8AMjRNYHhEhfQAw/ygbAGTQB8JUA2NwAb6AdgHgJgFoB4CaAWgHgJgFoB4CaAWgHgJgFoB4CaAWgHgJgFoB4CaAWgHgJgFoB4CaAWgHgJgFoB4CaAWgHgJgFoB4CaAWgHgJgFoB4CaAWgHgJgFoB4CaAWgHgAAAAAAABAHQD1CPABzqH+gAAAABJRU5ErkJggg==",
-  scroll: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABGElEQVR4nO3WsQkAIQwF0V3G2OwRpGOSbE3gGUGfNISyzDN2aebP1/4f0+QAAAAAAwK+7u/9nL2NIAAAIDaR8AMjRNYHhEhfQAw/ygbAGTQB8JUA2NwAb6AdgHgJgFoB4CaAWgHgJgFoB4CaAWgHgJgFoB4CaAWgHgJgFoB4CaAWgHgJgFoB4CaAWgHgJgFoB4CaAWgHgJgFoB4CaAWgHgJgFoB4CaAWgHgJgFoB4CaAWgHgAAAAAAABAHQD1CPABzqH+gAAAABJRU5ErkJggg=="
+  gem: "data:image/svg+xml;base64," + btoa('<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"><rect width="80" height="80" fill="red"/></svg>'),
+  key: "data:image/svg+xml;base64," + btoa('<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"><rect width="80" height="80" fill="yellow"/></svg>'),
+  scroll: "data:image/svg+xml;base64," + btoa('<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"><rect width="80" height="80" fill="cyan"/></svg>')
 };
 
 function updateInventory() {
@@ -26,16 +25,9 @@ function enterRoom(room) {
     return;
   }
 
-  currentRoom = room;
-
-  let gameDiv = document.getElementById("game");
-  gameDiv.classList.remove("room1", "room2", "room3");
-  gameDiv.classList.add(room);
-
   let itemDiv = document.getElementById("item");
   let itemImage = document.getElementById("itemImage");
 
-  // Set image and story per room
   if (room === "room1") {
     document.getElementById("story").innerText = "You see a sparkling Gem!";
     itemImage.src = images.gem;
@@ -52,10 +44,8 @@ function enterRoom(room) {
     itemImage.dataset.name = "Scroll";
   }
 
-  // Make sure item is visible
   itemDiv.style.display = "block";
 
-  // Click the image to collect
   itemImage.onclick = function() {
     collectItem(room);
   };
