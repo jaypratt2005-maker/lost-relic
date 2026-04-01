@@ -1,4 +1,5 @@
 let inventory = [];
+let currentRoom = null;
 let collected = {
   room1: false,
   room2: false,
@@ -10,46 +11,65 @@ function updateInventory() {
     "Items: " + (inventory.length ? inventory.join(", ") : "None");
 }
 
-function goToRoom(room) {
+function enterRoom(room) {
   if (collected[room]) {
-    alert("You already got the item here!");
+    document.getElementById("story").innerText =
+      "You already cleared this room.";
     return;
   }
 
+  currentRoom = room;
+
+  document.getElementById("puzzle").style.display = "block";
+
   if (room === "room1") {
-    let answer = prompt("Solve this: 2 + 2 = ?");
-    if (answer == "4") {
-      alert("You got a Gem!");
-      inventory.push("Gem");
-      collected.room1 = true;
-    } else {
-      alert("Wrong!");
-    }
+    document.getElementById("question").innerText = "Solve: 2 + 2 = ?";
   }
 
   if (room === "room2") {
-    alert("You found a Key!");
-    inventory.push("Key");
-    collected.room2 = true;
+    document.getElementById("question").innerText = "Type: KEY to collect it";
   }
 
   if (room === "room3") {
-    let answer = prompt("What color is the sky?");
-    if (answer && answer.toLowerCase() === "blue") {
-      alert("You got a Scroll!");
-      inventory.push("Scroll");
-      collected.room3 = true;
-    } else {
-      alert("Wrong!");
-    }
+    document.getElementById("question").innerText = "What color is the sky?";
   }
+}
+
+function submitAnswer() {
+  let answer = document.getElementById("answer").value.toLowerCase();
+
+  if (currentRoom === "room1" && answer === "4") {
+    inventory.push("Gem");
+    collected.room1 = true;
+    document.getElementById("story").innerText = "You found a Gem!";
+  }
+
+  else if (currentRoom === "room2" && answer === "key") {
+    inventory.push("Key");
+    collected.room2 = true;
+    document.getElementById("story").innerText = "You found a Key!";
+  }
+
+  else if (currentRoom === "room3" && answer === "blue") {
+    inventory.push("Scroll");
+    collected.room3 = true;
+    document.getElementById("story").innerText = "You found a Scroll!";
+  }
+
+  else {
+    document.getElementById("story").innerText = "Wrong answer!";
+    return;
+  }
+
+  document.getElementById("puzzle").style.display = "none";
+  document.getElementById("answer").value = "";
 
   updateInventory();
   checkWin();
 }
 
 function checkWin() {
-  if (inventory.length >= 3) {
+  if (inventory.length === 3) {
     document.getElementById("story").innerText =
       "You unlocked the chest and found the Lost Relic! You win!";
   }
