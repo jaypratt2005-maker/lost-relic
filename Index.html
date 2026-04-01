@@ -13,9 +13,16 @@
   <p id="story">You are in a mysterious room. Find the relic.</p>
 
   <div id="choices">
-    <button onclick="goToRoom('room1')">Go to Room 1</button>
-    <button onclick="goToRoom('room2')">Go to Room 2</button>
-    <button onclick="goToRoom('room3')">Go to Room 3</button>
+    <button onclick="enterRoom('room1')">Room 1</button>
+    <button onclick="enterRoom('room2')">Room 2</button>
+    <button onclick="enterRoom('room3')">Room 3</button>
+  </div>
+
+  <!-- Puzzle Area -->
+  <div id="puzzle" style="display:none;">
+    <p id="question"></p>
+    <input type="text" id="answer" placeholder="Type answer here">
+    <button onclick="submitAnswer()">Submit</button>
   </div>
 
   <p id="inventory">Items: None</p>
