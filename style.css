@@ -22,15 +22,15 @@ body {
 
 /* ROOM STYLES WITH GRADIENT BACKGROUNDS */
 .room1 {
-  background: linear-gradient(135deg, #1a1a2e, #3a3a5e); /* Dark dungeon feel */
+  background: linear-gradient(135deg, #1a1a2e, #3a3a5e);
 }
 
 .room2 {
-  background: linear-gradient(135deg, #16213e, #3e3e6e); /* Treasure room vibe */
+  background: linear-gradient(135deg, #16213e, #3e3e6e);
 }
 
 .room3 {
-  background: linear-gradient(135deg, #0f3460, #1f5fa0); /* Mystical sky feel */
+  background: linear-gradient(135deg, #0f3460, #1f5fa0);
 }
 
 /* BUTTONS */
@@ -50,8 +50,8 @@ button:hover {
   background-color: #555;
 }
 
-/* ITEM AREA */
-#item {
+/* ITEM IMAGE */
+#item img {
   margin-top: 20px;
 }
 
