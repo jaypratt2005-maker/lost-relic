@@ -1,14 +1,47 @@
+/* GENERAL PAGE STYLING */
 body {
   font-family: Arial, sans-serif;
   text-align: center;
   background-color: #111;
   color: white;
+  margin: 0;
+  padding: 0;
 }
 
+/* GAME CONTAINER */
 #game {
-  margin-top: 50px;
+  width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px #000;
+  min-height: 300px;
+  transition: background 0.5s ease;
 }
 
+/* ROOM STYLES */
+.room1 {
+  background-color: #1a1a2e;
+  background-image: url('https://i.imgur.com/XH2F3eC.jpg'); /* dungeon vibe */
+  background-size: cover;
+  background-position: center;
+}
+
+.room2 {
+  background-color: #16213e;
+  background-image: url('https://i.imgur.com/8O8lRDa.jpg'); /* treasure room */
+  background-size: cover;
+  background-position: center;
+}
+
+.room3 {
+  background-color: #0f3460;
+  background-image: url('https://i.imgur.com/3H91H6U.jpg'); /* sky room */
+  background-size: cover;
+  background-position: center;
+}
+
+/* BUTTONS */
 button {
   margin: 10px;
   padding: 10px 20px;
@@ -18,36 +51,35 @@ button {
   background-color: #333;
   color: white;
   font-size: 16px;
+  transition: background 0.3s ease;
 }
 
 button:hover {
   background-color: #555;
 }
 
+/* PUZZLE INPUT */
 #puzzle {
   margin-top: 20px;
 }
 
-input {
+input[type="text"] {
   padding: 10px;
   margin: 10px;
   border-radius: 5px;
   border: none;
+  width: 150px;
+  font-size: 16px;
 }
 
-.room1 {
-  background-color: #1a1a2e;
+/* INVENTORY */
+#inventory {
+  margin-top: 20px;
+  font-weight: bold;
 }
 
-.room2 {
-  background-color: #16213e;
-}
-
-.room3 {
-  background-color: #0f3460;
-}
-
-#game {
-  padding: 20px;
-  border-radius: 10px;
+/* STORY TEXT */
+#story {
+  font-size: 18px;
+  margin-bottom: 20px;
 }
