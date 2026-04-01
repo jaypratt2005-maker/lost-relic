@@ -34,3 +34,20 @@ input {
   border-radius: 5px;
   border: none;
 }
+
+.room1 {
+  background-color: #1a1a2e;
+}
+
+.room2 {
+  background-color: #16213e;
+}
+
+.room3 {
+  background-color: #0f3460;
+}
+
+#game {
+  padding: 20px;
+  border-radius: 10px;
+}
