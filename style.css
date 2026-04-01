@@ -17,26 +17,27 @@ body {
   box-shadow: 0 0 20px #000;
   min-height: 300px;
   transition: background 0.5s ease;
+  color: #fff;
 }
 
-/* ROOM STYLES */
+/* ROOM STYLES WITH FANTASY PLACEHOLDER IMAGES */
 .room1 {
   background-color: #1a1a2e;
-  background-image: url('https://i.imgur.com/XH2F3eC.jpg'); /* dungeon vibe */
+  background-image: url('https://i.imgur.com/7sQ1qJ7.jpg'); /* Dark dungeon */
   background-size: cover;
   background-position: center;
 }
 
 .room2 {
   background-color: #16213e;
-  background-image: url('https://i.imgur.com/8O8lRDa.jpg'); /* treasure room */
+  background-image: url('https://i.imgur.com/XYjvC0s.jpg'); /* Treasure room */
   background-size: cover;
   background-position: center;
 }
 
 .room3 {
   background-color: #0f3460;
-  background-image: url('https://i.imgur.com/3H91H6U.jpg'); /* sky room */
+  background-image: url('https://i.imgur.com/2XIvxH6.jpg'); /* Mystical sky */
   background-size: cover;
   background-position: center;
 }
