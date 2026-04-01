@@ -1,3 +1,5 @@
+// Updated game.js — clickable items, background rooms
+
 let inventory = [];
 let currentRoom = null;
 let collected = {
@@ -15,66 +17,54 @@ function enterRoom(room) {
   if (collected[room]) {
     document.getElementById("story").innerText =
       "You already cleared this room.";
+    document.getElementById("item").style.display = "none";
     return;
   }
 
   currentRoom = room;
 
   let gameDiv = document.getElementById("game");
-
-  // Remove old room styles
   gameDiv.classList.remove("room1", "room2", "room3");
-
-  // Add new room style
   gameDiv.classList.add(room);
 
-  // Show puzzle area
-  document.getElementById("puzzle").style.display = "block";
+  let itemDiv = document.getElementById("item");
+  let itemButton = document.getElementById("itemButton");
 
-  // Update story + question based on room
+  // Set item for the room
   if (room === "room1") {
-    document.getElementById("question").innerText = "Solve: 2 + 2 = ?";
-    document.getElementById("story").innerText = "This room glows faintly...";
+    document.getElementById("story").innerText = "You see a sparkling Gem!";
+    itemButton.innerText = "Take Gem";
   }
-
   if (room === "room2") {
-    document.getElementById("question").innerText = "Type: key to collect it";
-    document.getElementById("story").innerText = "You see something shiny...";
+    document.getElementById("story").innerText = "A shiny Key rests on a pedestal.";
+    itemButton.innerText = "Take Key";
+  }
+  if (room === "room3") {
+    document.getElementById("story").innerText = "A glowing Scroll floats in the air.";
+    itemButton.innerText = "Take Scroll";
   }
 
-  if (room === "room3") {
-    document.getElementById("question").innerText = "What color is the sky?";
-    document.getElementById("story").innerText = "The air feels strange here...";
-  }
+  itemDiv.style.display = "block";
+
+  // Add click event
+  itemButton.onclick = function() {
+    collectItem(room);
+  };
 }
 
-function submitAnswer() {
-  let answer = document.getElementById("answer").value.toLowerCase();
+function collectItem(room) {
+  if (collected[room]) return;
 
-  if (currentRoom === "room1" && answer === "4") {
-    inventory.push("Gem");
-    collected.room1 = true;
-    document.getElementById("story").innerText = "You found a Gem!";
-  }
-  else if (currentRoom === "room2" && answer === "key") {
-    inventory.push("Key");
-    collected.room2 = true;
-    document.getElementById("story").innerText = "You found a Key!";
-  }
-  else if (currentRoom === "room3" && answer === "blue") {
-    inventory.push("Scroll");
-    collected.room3 = true;
-    document.getElementById("story").innerText = "You found a Scroll!";
-  }
-  else {
-    document.getElementById("story").innerText = "Wrong answer!";
-    return;
-  }
+  if (room === "room1") inventory.push("Gem");
+  if (room === "room2") inventory.push("Key");
+  if (room === "room3") inventory.push("Scroll");
 
-  // Hide puzzle and clear input
-  document.getElementById("puzzle").style.display = "none";
-  document.getElementById("answer").value = "";
+  collected[room] = true;
 
+  document.getElementById("story").innerText =
+    `You collected your item! (${inventory.join(", ")})`;
+
+  document.getElementById("item").style.display = "none";
   updateInventory();
   checkWin();
 }
