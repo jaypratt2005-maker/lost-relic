@@ -1,4 +1,9 @@
 let inventory = [];
+let collected = {
+  room1: false,
+  room2: false,
+  room3: false
+};
 
 function updateInventory() {
   document.getElementById("inventory").innerText =
@@ -6,28 +11,34 @@ function updateInventory() {
 }
 
 function goToRoom(room) {
-  let story = document.getElementById("story");
+  if (collected[room]) {
+    alert("You already got the item here!");
+    return;
+  }
 
   if (room === "room1") {
     let answer = prompt("Solve this: 2 + 2 = ?");
     if (answer == "4") {
-      alert("You got Item 1!");
+      alert("You got a Gem!");
       inventory.push("Gem");
+      collected.room1 = true;
     } else {
       alert("Wrong!");
     }
   }
 
   if (room === "room2") {
-    alert("You found a hidden key!");
+    alert("You found a Key!");
     inventory.push("Key");
+    collected.room2 = true;
   }
 
   if (room === "room3") {
     let answer = prompt("What color is the sky?");
-    if (answer.toLowerCase() === "blue") {
-      alert("You got Item 3!");
+    if (answer && answer.toLowerCase() === "blue") {
+      alert("You got a Scroll!");
       inventory.push("Scroll");
+      collected.room3 = true;
     } else {
       alert("Wrong!");
     }
