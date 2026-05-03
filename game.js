@@ -14,7 +14,7 @@ function enterRoom(room) {
   let itemDiv = document.getElementById("item");
   let itemImage = document.getElementById("itemImage");
 
-  // 🔒 LOCK: Room 2 requires Key
+  //  LOCK: Room 2 requires Key
   if (room === "room2" && !inventory.includes("Key")) {
     document.getElementById("story").innerText =
       "The door is locked. You need a key.";
