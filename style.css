@@ -1,68 +1,97 @@
-/* GENERAL PAGE STYLING */
+/* RESET */
 body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  background-color: #111;
-  color: white;
   margin: 0;
-  padding: 0;
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle at top, #1a1a1a, #000);
+  color: white;
+  text-align: center;
 }
 
-/* GAME CONTAINER */
+/* TITLE */
+h1 {
+  margin-top: 30px;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+}
+
+/* GAME BOX */
 #game {
-  width: 600px;
-  margin: 50px auto;
-  padding: 20px;
+  margin: 40px auto;
+  padding: 30px;
+  width: 350px;
+  background: #111;
   border-radius: 15px;
-  box-shadow: 0 0 20px #000;
-  min-height: 300px;
-  transition: background 0.5s ease;
-  color: #fff;
+  box-shadow: 0 0 25px rgba(0,0,0,0.8);
 }
 
-/* ROOM STYLES WITH GRADIENT BACKGROUNDS */
-.room1 {
-  background: linear-gradient(135deg, #1a1a2e, #3a3a5e);
-}
-
-.room2 {
-  background: linear-gradient(135deg, #16213e, #3e3e6e);
-}
-
-.room3 {
-  background: linear-gradient(135deg, #0f3460, #1f5fa0);
+/* STORY TEXT */
+#story {
+  margin-bottom: 20px;
+  min-height: 50px;
 }
 
 /* BUTTONS */
 button {
   margin: 10px;
-  padding: 10px 20px;
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-  background-color: #333;
+  padding: 10px 18px;
+  background: #222;
   color: white;
-  font-size: 16px;
-  transition: background 0.3s ease;
+  border: 1px solid #444;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 button:hover {
-  background-color: #555;
+  background: #333;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255,255,255,0.2);
 }
 
-/* ITEM IMAGE */
+/* ITEM DISPLAY */
 #item img {
-  margin-top: 20px;
+  width: 90px;
+  margin-top: 15px;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+#item img:hover {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 10px gold);
 }
 
 /* INVENTORY */
 #inventory {
   margin-top: 20px;
-  font-weight: bold;
+  font-size: 0.9rem;
+  color: #ccc;
 }
 
-/* STORY TEXT */
-#story {
-  font-size: 18px;
-  margin-bottom: 20px;
+/* PUZZLE BOX */
+#puzzleBox {
+  margin-top: 20px;
+}
+
+#puzzleInput {
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  margin-top: 10px;
+  width: 70%;
+  text-align: center;
+}
+
+/* SUBMIT BUTTON */
+#puzzleBox button {
+  margin-top: 10px;
+}
+
+/* SUBTLE ANIMATION */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#game {
+  animation: fadeIn 0.5s ease;
 }
