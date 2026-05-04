@@ -6,7 +6,25 @@ let collected = {
 };
 
 let currentRoom = null;
-let trapRoom = Math.random() < 0.5 ? "room1" : "room3"; // random trap
+function resetGame() {
+  inventory = [];
+  collected = { room1: false, room2: false, room3: false };
+
+  // trap
+  trapRoom = Math.random() < 0.5 ? "room1" : "room3";
+
+  updateInventory();
+  document.getElementById("story").innerText =
+    "You triggered a trap! Game reset.";
+
+
+  document.getElementById("story").innerText =
+  "Something feels off... Solve carefully.";
+
+  
+  document.getElementById("item").style.display = "none";
+  document.getElementById("puzzleBox").style.display = "none";
+}
 
 function updateInventory() {
   document.getElementById("inventory").innerText =
@@ -32,7 +50,7 @@ function enterRoom(room) {
   itemDiv.style.display = "none";
   puzzleBox.style.display = "none";
 
-  // 🔒 Room 2 locked
+  //  Room 2 locked
   if (room === "room2" && !inventory.includes("Key")) {
     document.getElementById("story").innerText =
       "The door is locked. You need a key.";
@@ -78,7 +96,9 @@ function showPuzzle(question) {
 }
 
 function submitPuzzle() {
-  let answer = document.getElementById("puzzleInput").value.toLowerCase();
+  let answer = document.getElementById("puzzleInput").value
+  .toLowerCase()
+  .trim();
 
   // Correct answers
   let correct = false;
