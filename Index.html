@@ -27,6 +27,7 @@
   <p id="puzzleText"></p>
   <input id="puzzleInput" type="text" placeholder="Enter answer">
   <button onclick="submitPuzzle()">Submit</button>
+  <input id="puzzleInput" type="text" placeholder="Enter answer" onkeydown="if(event.key==='Enter') submitPuzzle()">
 </div>
 
   <p id="inventory">Items: None</p>
